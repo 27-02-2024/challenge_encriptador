@@ -40,7 +40,7 @@ body {
 .main-content {
     /* flex:1 1 auto; */
     flex-grow:1;
-    
+    padding-left: 100px;
     /*child flex*/
     display: flex;
     justify-content: space-between;
@@ -49,7 +49,8 @@ body {
 
 .input-area {
     width: 60%; 
-
+    padding-top: 50px;
+    padding-left: 50px;
     /*child flex*/
     display: flex;
     flex-direction: column;
@@ -73,6 +74,8 @@ textarea {
     border: 1px solid #1D3557;
     border-radius: 8px;
     font-size: 16px;
+    background-color: transparent;
+    border: none;
 }
 
 .options {
@@ -92,7 +95,7 @@ small {
 button {
     padding: 10px 20px;
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
     font-size: 16px;
     cursor: pointer;
 }
@@ -117,7 +120,7 @@ button {
     background-color: #FFFFFF;
     border-radius: 16px;
     text-align: center;
-    padding: 20px;
+    padding: 15px;
 }
 
 .output-area img {
@@ -133,9 +136,18 @@ button {
     margin-top: 10px;
 }
 
+.result-area
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;     
+    
+    height: 100%;
+}
+
 .auto-stretch {
     padding: 15px;
-    border: 1px solid #1D3557;
+    border: none;
     border-radius: 8px;
     font-size: 16px;
 
@@ -144,7 +156,6 @@ button {
     min-height: 1em; /* Minimum height of textarea */
     box-sizing: border-box; /* Include padding in height calculation */
     width: 100%; /* Full width */
-    border: 1px solid #ccc; /* Add a border if needed */
   }
 
 .hidden-elem {
@@ -165,11 +176,42 @@ button {
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
+        padding: 0;
     }    
+    .input-area {
+        width: 60%; 
+        padding: 5px;
+        /*child flex*/
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+    
     .input-area {
         width: 100%;
         align-items: center;
+        padding: 15px;
     }
+
+    .options {
+        width: 100%;
+    }
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    button {
+        width: 100%;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 10px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
     .output-area {
         margin-top: 40px;
         width: 100%;
@@ -188,10 +230,12 @@ button {
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
+        padding: 0;
     }    
     .input-area {
         width: 100%;
         align-items: center;
+        padding: 5px;
     }
     .output-area {
         margin-top: 40px;
