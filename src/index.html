@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Encriptador de Texto</title>
-    <link rel="stylesheet" href="site.css">
+    <link rel="stylesheet" href="css/site.css">
 </head>
 <body>
     <div class="container">
@@ -14,23 +14,35 @@
 
         <main class="main-content">
             <div class="input-area">
-                <textarea placeholder="Ingrese el texto aquí"></textarea>
-                <div class="options">
-                    <small>⚠️ Solo letras minúsculas y sin acentos</small>
+                <textarea id="txt-ingreso" placeholder="Ingrese el texto aquí"></textarea>
+                <span id="txt-ingreso-readonly" class="oculto" readonly></span>
+                <div id="options-ori" class="options">
+                    <small> * Solo letras minúsculas y sin acentos</small>
                     <div class="buttons">
                         <button id="encrypt-button">Encriptar</button>
                         <button id="decrypt-button" class="secondary">Desencriptar</button>
                     </div>
                 </div>
+                <div id="options-res" class="options oculto">
+                    <div class="buttons">
+                        <button id="reset-button">Ingresar otro mensage</button>
+                    </div>
+                </div>
             </div>
 
             <div class="output-area">
-                <img src="image-placeholder.png" alt="Ningún mensaje fue encontrado">
-                <p><strong>Ningún mensaje fue encontrado</strong></p>
-                <p>Ingresa el texto que desees encriptar o desencriptar.</p>
+                <div id="inicio">
+                    <img src="img/no-texto.png" alt="Ningún mensaje fue encontrado">
+                    <p><strong>Ningún mensaje fue encontrado</strong></p>
+                    <p>Ingresa el texto que desees encriptar o desencriptar.</p>
+                </div>
+                <div id="resultado" class="oculto">
+                    <textarea id="txt-resultado"></textarea>
+                    <button id="copiar-button" class="secondary">Copiar</button>
+                </div>
             </div>
         </main>
     </div>
-    <script src="site.js"></script>
+    <script src="js/site.js"></script>
 </body>
 </html>
