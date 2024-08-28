@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encriptador de Texto</title>
+    <link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">a</div>
+        </header>
+
+        <main class="main-content">
+            <div class="input-area">
+                <textarea id="user-input" placeholder="Ingrese el texto aquí"></textarea>
+                <span id="user-input-readonly" class="hidden-elem" readonly></span>
+                <div id="options-ori" class="options">
+                    <small> * Solo letras minúsculas y sin acentos</small>
+                    <div class="buttons">
+                        <button id="encrypt-btn" class="btn-primary">Encriptar</button>
+                        <button id="decrypt-btn" class="btn-secondary">Desencriptar</button>
+                    </div>
+                </div>
+                <div id="options-res" class="options hidden-elem">
+                    <div class="buttons">
+                        <button id="reset-btn" class="btn-primary">Ingresar otro mensage</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="output-area">
+                <div id="default-output">
+                    <img src="img/no-texto.png" alt="Ningún mensaje fue encontrado">
+                    <p><strong>Ningún mensaje fue encontrado</strong></p>
+                    <p>Ingresa el texto que desees encriptar o desencriptar.</p>
+                </div>
+                <div id="res-output" class="hidden-elem">
+                    <textarea id="res-output-text"></textarea>
+                    <button id="copy-btn" class="btn-secondary">Copiar</button>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>Copyright © 2024. Ana Pilar Arias. All Rights Reserved.</p>
+        </div>
+    </div>
+    <script src="js/site.js"></script>
+</body>
+</html>
