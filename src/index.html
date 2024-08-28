@@ -14,34 +14,38 @@
 
         <main class="main-content">
             <div class="input-area">
-                <textarea id="txt-ingreso" placeholder="Ingrese el texto aquí"></textarea>
-                <span id="txt-ingreso-readonly" class="oculto" readonly></span>
+                <textarea id="user-input" placeholder="Ingrese el texto aquí"></textarea>
+                <span id="user-input-readonly" class="hidden-elem" readonly></span>
                 <div id="options-ori" class="options">
                     <small> * Solo letras minúsculas y sin acentos</small>
                     <div class="buttons">
-                        <button id="encrypt-button">Encriptar</button>
-                        <button id="decrypt-button" class="secondary">Desencriptar</button>
+                        <button id="encrypt-btn" class="btn-primary">Encriptar</button>
+                        <button id="decrypt-btn" class="btn-secondary">Desencriptar</button>
                     </div>
                 </div>
-                <div id="options-res" class="options oculto">
+                <div id="options-res" class="options hidden-elem">
                     <div class="buttons">
-                        <button id="reset-button">Ingresar otro mensage</button>
+                        <button id="reset-btn" class="btn-primary">Ingresar otro mensage</button>
                     </div>
                 </div>
             </div>
 
             <div class="output-area">
-                <div id="inicio">
+                <div id="default-output">
                     <img src="img/no-texto.png" alt="Ningún mensaje fue encontrado">
                     <p><strong>Ningún mensaje fue encontrado</strong></p>
                     <p>Ingresa el texto que desees encriptar o desencriptar.</p>
                 </div>
-                <div id="resultado" class="oculto">
-                    <textarea id="txt-resultado"></textarea>
-                    <button id="copiar-button" class="secondary">Copiar</button>
+                <div id="res-output" class="hidden-elem">
+                    <textarea id="res-output-text"></textarea>
+                    <button id="copy-btn" class="btn-secondary">Copiar</button>
                 </div>
             </div>
         </main>
+
+        <footer>
+            <p>Copyright © 2024. Ana Pilar Arias. All Rights Reserved.</p>
+        </footer>
     </div>
     <script src="js/site.js"></script>
 </body>

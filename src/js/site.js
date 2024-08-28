@@ -1,68 +1,119 @@
-document.getElementById('encrypt-button').addEventListener('click', function() {
-    let inputText = document.querySelector('textarea').value;
+//id de los elementos que quiero manipular
+const userInputId = 'user-input';
+const userInputReadOnlyId = 'user-input-readonly';
+const defaultOutputId = 'default-output';
+const resOutputId = 'res-output';
+const resOutputTextId = 'res-output-text';
+const optionsOriId = 'options-ori';
+const optionsResId = 'options-res';
+const copyButtonId = 'copy-btn';
+
+//eventos
+
+document.getElementById('encrypt-btn').addEventListener('click', function() {
+    //obtenemos el valor del input ingresadp
+    let inputText = document.getElementById(userInputId).value;
+  
+    //encriptamos el texto y lo devolvemos en una variable
     let encryptedText = encriptar(inputText);
     
+    //mostramos el resultado en la consola
     console.log('Texto encriptado:', encryptedText);
 
-    actualizarResultado(encryptedText);
+    //actualizamos el resultado en los text areas
+    actualizarResultado(inputText, encryptedText);
 
+    //acomodamos el estado del html ocultando y mostrando elementos
     ocultarDesocultar();
 });
 
-document.getElementById('decrypt-button').addEventListener('click', function() {
-    let inputText = document.querySelector('textarea').value;
+document.getElementById('decrypt-btn').addEventListener('click', function() {
+    //obtenemos el valor del input ingresadp
+    let inputText = document.getElementById(userInputId).value;
+    
+    //desencriptamos el texto y lo devolvemos en una variable
     let decryptedText = desencriptar(inputText);
     
+    //mostramos el resultado en la consola
     console.log('Texto desencriptado:', decryptedText);
 
-    actualizarResultado(decryptedText);
+    //actualizamos el resultado en los text areas
+    actualizarResultado(inputText, decryptedText);
 
+    //acomodamos el estado del html ocultando y mostrando elementos
     ocultarDesocultar();
 });
 
-document.getElementById('copiar-button').addEventListener('click', function() {
-    let text = document.querySelector(`#txt-resultado`).value;
+document.getElementById('copy-btn').addEventListener('click', function() {
+    //obtenemos el texto que se quiere copiar
+    let text = document.getElementById(resOutputId).value;
 
+    //con esta funcion copiamos el texo en el clipboard
     navigator.clipboard.writeText(text).then(function() {
+
+        //una vez copiado vamos a cambiar el texto del boton
+        //para mostrar al usuario que algo hizo
+
+        //obtenemos el boton y cambiamos texto y clase css
+        var copyButton = document.getElementById(copyButtonId);
+        copyButton.textContent  = 'Copiado!';
+        copyButton.classList.add('copied');
+
+        //Luego de 2 segundo restauraramos el texto y el estilo del botón
+        setTimeout(function() {
+            copyButton.textContent  = 'Copiar';
+            copyButton.classList.remove('copied');
+        }, 2000);
+
+        //informamos en la consola que se copio
         console.log('Texto copiado al portapapeles');
     }).catch(function(err) {
+        //si hay un error mostramos un error en la consola
         console.error('No se pudo copiar el texto: ', err);
     });
 });
 
+//agregue un boton para reinicar el proceso
+document.getElementById('reset-btn').addEventListener('click', function() {
+    //obtenemos los elementos y actualizamos el texto a vacio
+    document.getElementById(resOutputId).value = '';
+    document.getElementById(userInputReadOnlyId).innerHTML = '';
+    document.getElementById(userInputId).value = '';
 
-document.getElementById('reset-button').addEventListener('click', function() {
-    document.querySelector(`#txt-resultado`).value = '';
-    document.querySelector(`#txt-ingreso-readonly`).innerHTML = '';
-    document.querySelector(`#txt-ingreso`).value = '';
+    //actualizamos el estado de los elementos html
     ocultarDesocultar();
 });
 
-function actualizarResultado(text){
-    document.querySelector(`#txt-resultado`).value = text;
-    document.querySelector(`#txt-ingreso-readonly`).innerHTML = text;
+
+//funciones
+
+//actualizamos los text areas con su nuevo valor
+function actualizarResultado(oriText, newText){
+    document.getElementById(resOutputTextId).value = newText;
+    document.getElementById(userInputReadOnlyId).innerHTML = oriText;
 }
 
+//cambiamos de estado el elemento agregando o quitando la classe para ocultar
+//la applicacion solo tiene dos estados: ingreso text y mostrar resultados.
 function toggle(id) {
     let inputElement = document.getElementById(id);
-    inputElement.classList.toggle('oculto');
+    inputElement.classList.toggle('hidden-elem');
 }
-
 function ocultarDesocultar()
 {
-    toggle('inicio');
-
-    toggle('resultado');
-
-    toggle('txt-ingreso');
-
-    toggle('txt-ingreso-readonly');
+    toggle(defaultOutputId);
+    toggle(resOutputId);
     
-    toggle('options-ori');
+    toggle(userInputId);
+    toggle(userInputReadOnlyId);
 
-    toggle('options-res');
+    toggle(optionsOriId);
+    toggle(optionsResId);
 }
 
+//funcion para eciptar el texto de entrada
+//usamos un expresión regular para indicar que queremos reemplazar
+//todas las ocurrencias de esa letra o palabra.
 function encriptar(text) {
     let encriptado = text
         .replace(/e/g, "enter")
@@ -73,6 +124,9 @@ function encriptar(text) {
     return encriptado;
 }
 
+//funcion para desencriptar el texto de entrada
+//usamos un expresión regular para indicar que queremos reemplazar
+//todas las ocurrencias de esa letra o palabra.
 function desencriptar(text) {
     let desencriptado = text
         .replace(/enter/g, "e")
