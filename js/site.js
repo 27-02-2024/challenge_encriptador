@@ -46,8 +46,8 @@ document.getElementById('decrypt-btn').addEventListener('click', function() {
 
 document.getElementById('copy-btn').addEventListener('click', function() {
     //obtenemos el texto que se quiere copiar
-    let text = document.getElementById(resOutputId).value;
-
+    let text = document.getElementById(userInputId).value;
+ console.log(text);
     //con esta funcion copiamos el texo en el clipboard
     navigator.clipboard.writeText(text).then(function() {
 
@@ -84,6 +84,16 @@ document.getElementById('reset-btn').addEventListener('click', function() {
     ocultarDesocultar();
 });
 
+//validar que solo ingrese minusculas sin acentos. 
+const input = document.getElementById(userInputId);
+input.addEventListener("input", function () {
+    const regex = /^[a-z0-9]+$/;
+    if (!regex.test(this.value)) {
+      // Si el valor del input no cumple con la expresión regular, muestra un mensaje o limpia el input
+      alert("Solo se permiten letras minúsculas sin acento y números.");
+      this.value = this.value.replace(/[^a-z0-9]/g, ""); // Elimina caracteres no permitidos
+    }
+});
 
 //funciones
 
