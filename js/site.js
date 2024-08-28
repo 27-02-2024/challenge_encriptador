@@ -14,6 +14,11 @@ document.getElementById('encrypt-btn').addEventListener('click', function() {
     //obtenemos el valor del input ingresadp
     let inputText = document.getElementById(userInputId).value;
   
+    if(inputText.length === 0){
+        alert('Debe ingresar un mensaje');
+        return;
+    }
+
     //encriptamos el texto y lo devolvemos en una variable
     let encryptedText = encriptar(inputText);
     
@@ -31,6 +36,11 @@ document.getElementById('decrypt-btn').addEventListener('click', function() {
     //obtenemos el valor del input ingresadp
     let inputText = document.getElementById(userInputId).value;
     
+    if(inputText.length === 0){
+        alert('Debe ingresar un mensaje');
+        return;
+    }
+
     //desencriptamos el texto y lo devolvemos en una variable
     let decryptedText = desencriptar(inputText);
     
@@ -46,8 +56,7 @@ document.getElementById('decrypt-btn').addEventListener('click', function() {
 
 document.getElementById('copy-btn').addEventListener('click', function() {
     //obtenemos el texto que se quiere copiar
-    let text = document.getElementById(userInputId).value;
- console.log(text);
+    let text = document.getElementById(resOutputTextId).value
     //con esta funcion copiamos el texo en el clipboard
     navigator.clipboard.writeText(text).then(function() {
 
@@ -87,11 +96,11 @@ document.getElementById('reset-btn').addEventListener('click', function() {
 //validar que solo ingrese minusculas sin acentos. 
 const input = document.getElementById(userInputId);
 input.addEventListener("input", function () {
-    const regex = /^[a-z0-9]+$/;
+    const regex = /^[a-z0-9\s]+$/;
     if (!regex.test(this.value)) {
       // Si el valor del input no cumple con la expresión regular, muestra un mensaje o limpia el input
       alert("Solo se permiten letras minúsculas sin acento y números.");
-      this.value = this.value.replace(/[^a-z0-9]/g, ""); // Elimina caracteres no permitidos
+      this.value = this.value.replace(/[^a-z0-9\s]/g, ""); // Elimina caracteres no permitidos
     }
 });
 
